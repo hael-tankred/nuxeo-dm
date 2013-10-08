@@ -44,4 +44,26 @@
 <link href="#{contextPath}/css/custom-css.css" rel="stylesheet" type="text/css" />
 <ui:include src="/incl/custom-includes.xhtml" />
 
+<c:if test="#{nxDevModeSet}">
+<script>
+  jQuery(document).ready(function() {
+    var nxlDevEnabled = false;
+    jQuery(document).bind('keydown', 'Shift+d', function() {
+     nxlDevEnabled = !nxlDevEnabled;
+    });
+    jQuery(".nxlDevRegion").each(function() {
+        jQuery(this).hover(function() {
+          if (nxlDevEnabled) {
+            jQuery(this).children(".nxlDevContainer").show();
+          }
+        }, function() {
+          if (nxlDevEnabled) {
+            jQuery(this).children(".nxlDevContainer").hide();
+          }
+        });
+     });
+  });
+</script>
+</c:if>
+
 </div>
